@@ -11,6 +11,11 @@ import java.util.Date;
 public class App {
     public static void main(String[] args) throws Exception 
     {
+        // Check for valid arguments
+        if(args == null || args.length != 1){
+            return;
+        }
+
         if(args[0].equals("a")) 
         {
             System.out.println("Loading data ...");
@@ -140,6 +145,8 @@ public class App {
                 } else inWord = false;
             }
             System.out.printf("%d words found", count);
+        } else {
+            return;
         }
     }
 }
