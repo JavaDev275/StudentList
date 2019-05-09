@@ -49,11 +49,9 @@ public class App {
             boolean done = false;
             for(int idx = 0; idx < students.length && !done; idx++)
             {
-                if(students[idx].trim().equals(searchTerm)) 
-                {                    
+                if(students[idx].trim().equals(searchTerm))      
                     System.out.println("We found it!");
                     done = true;
-                }
             }
         } 
         else if(args[0].contains(Constants.ShowCount))
