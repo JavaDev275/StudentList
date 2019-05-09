@@ -24,10 +24,11 @@ public class App {
 
         if(args[0].equals("a")) 
         {
-            System.out.println("Loading data ...");
             String[] students = fileContent.split(",");
-            for(String student : students) System.out.println(student);
-            System.out.println("Data loaded");
+            for(String student : students) 
+            {
+                System.out.println(student);
+            }
         } 
         else if(args[0].equals("r"))
         {      
@@ -36,19 +37,17 @@ public class App {
             Random rand = new Random();
             int randomIndex = rand.nextInt(students.length);
             System.out.println(students[randomIndex]);
-            System.out.println("Data loaded");
 
         } 
         else if(args[0].contains("+"))
         {
             String newEntry = args[0].substring(1);
-
             updateContent(fileContent + ", " + newEntry, "students.txt");
         } 
         else if(args[0].contains("?"))
         {                      
             String searchTerm = args[0].substring(1);
-            String[] students = fileContent.split(",| ");
+            String[] students = fileContent.split(", ");
             boolean done = false;
             for(int idx = 0; idx < students.length && !done; idx++)
             {
@@ -59,7 +58,6 @@ public class App {
         } 
         else if(args[0].contains("c"))
         {
-            System.out.println("Loading data ...");
             char[] fileChars = fileContent.toCharArray();
             int count = 0;
             boolean inWord = false;
