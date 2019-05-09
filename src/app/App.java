@@ -72,7 +72,6 @@ public class App {
 
             Date now = new Date();
             b.newLine(); b.append("List last updated on " + now.toString());
-        
             b.close();
             br.close();        
 
