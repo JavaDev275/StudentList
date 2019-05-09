@@ -25,7 +25,9 @@ public class App {
         if(args[0].equals(Constants.ShowAll)) 
         {
             String[] students = fileContent.split(Constants.StudentEntryDelimiter);
-            for(String student : students) System.out.println(student);
+            for(String student : students) {
+                System.out.println(student);
+            }
         } 
         else if(args[0].equals(Constants.ShowRandom))
         {      
@@ -67,21 +69,8 @@ public class App {
         } 
         else if(args[0].contains(Constants.ShowCount))
         {
-            char[] fileChars = fileContent.toCharArray();
-            int count = 0;
-            boolean inWord = false;
-            for(char character : fileChars)
-            {
-                if(character > ' ' && character < 0177)
-                {
-                    if(!inWord) 
-                    {
-                        count = count + 1;
-                        inWord = true;                        
-                    }
-                } else inWord = false;
-            }
-            System.out.printf("%d words found", count);
+            String[] students = fileContent.split(Constants.StudentEntryDelimiter);
+            System.out.printf("%d words found", students.length);
         } 
         else 
         {
