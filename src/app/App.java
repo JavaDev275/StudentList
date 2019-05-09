@@ -92,7 +92,7 @@ public class App {
         // The try/catch block handles the possible error that may occur if 
         // there was an issue with accessing the file.        
         try {
-            File file = new File("students.txt");
+            File file = new File(Constants.StudentList);
             FileReader reader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(reader);        
             String currentLine;            
