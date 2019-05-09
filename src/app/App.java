@@ -8,7 +8,6 @@ import java.io.BufferedWriter;
 import java.util.Random;
 import java.util.Date;
 
-
 public class App {
     public static void main(String[] args) throws Exception 
     {
