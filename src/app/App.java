@@ -92,9 +92,7 @@ public class App {
         // The try/catch block handles the possible error that may occur if 
         // there was an issue with accessing the file.        
         try {
-            File file = new File(Constants.StudentList);
-            FileReader reader = new FileReader(file);
-            BufferedReader bufferedReader = new BufferedReader(reader);        
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(Constants.StudentList));        
             String currentLine;            
             currentLine = bufferedReader.readLine();
             
@@ -122,9 +120,7 @@ public class App {
         String timestamp = String.format("List last updated %s", new Date());
         
         try {
-            File file = new File(Constants.StudentList);
-            FileWriter writer = new FileWriter(file);
-            BufferedWriter bufferedWriter = new BufferedWriter(writer);        
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(Constants.StudentList));        
             bufferedWriter.write(content);
             bufferedWriter.newLine();
             bufferedWriter.append(timestamp);            
