@@ -15,8 +15,6 @@ public class App {
         // Every operation requires us to load the student list
         String studentList = loadStudentList();
 
-        // What if studentList is empty?
-
         if(args[0].equals(Constants.ShowAll)) 
         {                        
             String[] students = studentList.split(Constants.StudentEntryDelimiter);
@@ -45,24 +43,14 @@ public class App {
             // TODO: Handle duplicate student names
             updateStudentList(studentList + Constants.StudentEntryDelimiter + newEntry);  
         } 
-        else if(args[0].contains(Constants.FindEntry))
+        else if(args[0].startsWith(Constants.FindEntry))
         {
             String[] students = studentList.split(Constants.StudentEntryDelimiter);
             String searchTerm = args[0].substring(1);
-            int indexLocation = -1;
-            for (int idx = 0; idx < students.length; idx++)
-            {
-                if (students[idx].trim().equals(searchTerm))
-                {
-                    indexLocation = idx;
-                    break;
-                }
-            }
 
-
-            if(indexLocation >= 0)
+            if(Arrays.asList(students).contains(searchTerm))
             {
-                System.out.printf("Entry %s found at index %d", searchTerm, indexLocation);
+                System.out.printf("Entry %s found", searchTerm);
             } 
             else 
             {
@@ -70,7 +58,7 @@ public class App {
             }
 
         } 
-        else if(args[0].contains(Constants.ShowCount)) 
+        else if(args[0].equals(Constants.ShowCount)) 
         {
             String[] students = studentList.split(Constants.StudentEntryDelimiter);
             System.out.printf("%d words found", students.length);
@@ -88,7 +76,7 @@ public class App {
         // Variable used to organize code and allow buffered reader to close
         String bufferedStudentList = " ";  
 
-        // The try/catch block handles the possible error that may occur if 
+        // The try...catch block handles the possible error that may occur if 
         // there was an issue with accessing the file.        
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(Constants.StudentList));
