@@ -27,7 +27,8 @@ public class App {
                 D = b.readLine();
             }        
             String[] l = t.split(",");
-            for(String j : l) {
+            for(String j : l) 
+            {
                 System.out.println(j);
             }
             b.close();
