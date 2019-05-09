@@ -52,7 +52,7 @@ public class App {
         
         else if(args[0].contains("+")){
             // Read
-            File f = new File("students.txt");
+            File f = new File("src/students.txt");
                           
             String k = args[0].substring(1);
             FileReader c = new FileReader(f);
@@ -72,8 +72,9 @@ public class App {
             b.write(t + ", " + k);
 
             Date now = new Date();
-            b.append(" \n" + now.toString());
-
+            b.newLine();
+            b.append("List last updated on " + now.toString());
+        
             b.close();
             br.close();        
 
