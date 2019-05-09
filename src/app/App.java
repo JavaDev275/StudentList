@@ -28,7 +28,9 @@ public class App {
                 D = b.readLine();
             }        
             String[] l = t.split(",");
-            for(String j : l) System.out.println(j);
+            for(String j : l) {
+                System.out.println(j);
+            }
             b.close();
             System.out.println("Data loaded");
         } 
