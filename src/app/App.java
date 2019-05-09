@@ -25,7 +25,8 @@ public class App {
         if(args[0].equals(Constants.ShowAll)) 
         {
             String[] students = fileContent.split(Constants.StudentEntryDelimiter);
-            for(String student : students) {
+            for(String student : students) 
+            {
                 System.out.println(student);
             }
         } 
