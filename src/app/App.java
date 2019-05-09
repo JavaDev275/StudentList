@@ -20,35 +20,32 @@ public class App {
             return;
         }
 
-        String fileContent = loadData("students.txt");
+        String fileContent = loadData(Constants.StudentList);
 
-        if(args[0].equals("a")) 
+        if(args[0].equals(Constants.ShowAll)) 
         {
-            System.out.println("Loading data ...");
-            String[] students = fileContent.split(",");
+            String[] students = fileContent.split(Constants.StudentEntryDelimiter);
             for(String student : students) System.out.println(student);
-            System.out.println("Data loaded");
         } 
-        else if(args[0].equals("r"))
+        else if(args[0].equals(Constants.ShowRandom))
         {      
             // Load the data  
-            String[] students = fileContent.split(",");
+            String[] students = fileContent.split(Constants.StudentEntryDelimiter);
             Random rand = new Random();
             int randomIndex = rand.nextInt(students.length);
             System.out.println(students[randomIndex]);
-            System.out.println("Data loaded");
-
         } 
-        else if(args[0].contains("+"))
+        else if(args[0].contains(Constants.AddEntry))
         {
             String newEntry = args[0].substring(1);
 
-            updateContent(fileContent + ", " + newEntry, "students.txt");
+            // May have some issues later on with duplicate entries
+            updateContent(fileContent + Constants.StudentEntryDelimiter + newEntry, Constants.StudentList);
         } 
-        else if(args[0].contains("?"))
+        else if(args[0].contains(Constants.FindEntry))
         {                      
             String searchTerm = args[0].substring(1);
-            String[] students = fileContent.split(",| ");
+            String[] students = fileContent.split(Constants.StudentEntryDelimiter);
             boolean done = false;
             for(int idx = 0; idx < students.length && !done; idx++)
             {
@@ -59,9 +56,8 @@ public class App {
                 }
             }
         } 
-        else if(args[0].contains("c"))
+        else if(args[0].contains(Constants.ShowCount))
         {
-            System.out.println("Loading data ...");
             char[] fileChars = fileContent.toCharArray();
             int count = 0;
             boolean inWord = false;
@@ -77,7 +73,9 @@ public class App {
                 } else inWord = false;
             }
             System.out.printf("%d words found", count);
-        } else {
+        } 
+        else 
+        {
             return;
         }
 
