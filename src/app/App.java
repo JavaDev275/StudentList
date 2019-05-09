@@ -15,12 +15,13 @@ public class App {
         // Every operation requires us to load the student list
         String studentList = loadStudentList();
 
-        // What if studentList is empty?
-
         if(args[0].equals(Constants.ShowAll)) 
         {                        
             String[] students = studentList.split(Constants.StudentEntryDelimiter);
-            for(String student : students) System.out.println(student);
+            for(String student : students) 
+            {
+                System.out.println(student);
+            }
 
         } 
         else if(args[0].equals(Constants.ShowRandom))
@@ -45,11 +46,10 @@ public class App {
             // TODO: Handle duplicate student names
             updateStudentList(studentList + Constants.StudentEntryDelimiter + newEntry);  
         } 
-        else if(args[0].contains(Constants.FindEntry))
+        else if(args[0].startsWith(Constants.FindEntry))
         {
             String[] students = studentList.split(Constants.StudentEntryDelimiter);
             String searchTerm = args[0].substring(1);
-
 
             if(Arrays.asList(students).contains(searchTerm))
             {
@@ -61,7 +61,7 @@ public class App {
             }
 
         } 
-        else if(args[0].contains(Constants.ShowCount)) 
+        else if(args[0].equals(Constants.ShowCount)) 
         {
             String[] students = studentList.split(Constants.StudentEntryDelimiter);
             System.out.printf("%d words found", students.length);
@@ -79,14 +79,14 @@ public class App {
         // Variable used to organize code and allow buffered reader to close
         String bufferedStudentList = " ";  
 
-        // The try/catch block handles the possible error that may occur if 
+        // The try...catch block handles the possible error that may occur if 
         // there was an issue with accessing the file.        
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(Constants.StudentList));
             bufferedStudentList = bufferedReader.readLine();
             bufferedReader.close();
-        } catch (IOException e){
-            System.out.println(e);
+        } catch (IOException exception){
+            System.out.println(exception);
         } 
 
         return bufferedStudentList;        
