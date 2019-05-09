@@ -13,7 +13,6 @@ public class App {
     {
         if(args[0].equals("a")) 
         {
-            System.out.println("Loading data ...");
             File f = new File("students.txt");
             FileReader r = new FileReader(f);
             BufferedReader b = new BufferedReader(r);        
@@ -32,7 +31,6 @@ public class App {
                 System.out.println(j);
             }
             b.close();
-            System.out.println("Data loaded");
         } 
         else if(args[0].equals("r"))
         {      
@@ -51,9 +49,8 @@ public class App {
             String[] l = t.split(",");
             Random x = new Random();
             int y = x.nextInt(l.length);
-            System.out.println(l[y]);
+            System.out.printf(l[y]);
             b.close();
-            System.out.println("Data loaded");
 
         } 
         else if(args[0].contains("+"))
@@ -101,7 +98,7 @@ public class App {
             for(int idx = 0; idx < i.length && !done; idx++)
             {
                 if(i[idx].trim().equals(k))             
-                    System.out.println("We found it!");
+                    System.out.printf("We found it!");
                     done = true;
                 
             }
@@ -109,7 +106,6 @@ public class App {
         } 
         else if(args[0].contains("c"))
         {
-            System.out.println("Loading data ...");
             File f = new File("students.txt");                                      
             FileReader c = new FileReader(f);
             BufferedReader br = new BufferedReader(c);            
