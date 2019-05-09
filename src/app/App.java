@@ -72,8 +72,7 @@ public class App {
             b.write(t + ", " + k);
 
             Date now = new Date();
-            b.newLine();
-            b.append("List last updated on " + now.toString());
+            b.newLine(); b.append("List last updated on " + now.toString());
         
             b.close();
             br.close();        
@@ -91,7 +90,6 @@ public class App {
                 t += d;                
                 d = br.readLine();
             }            
-            System.out.println(t);
             String[] i = t.split(",| ");
             System.out.println(i.length);
             int count = 0;
@@ -132,8 +130,6 @@ public class App {
                 } else inWord = false;
             }
 
-            String[] jo = t.split(",");
-            System.out.println(jo.length);
             System.out.printf("%d words found", count);
         }
     }
