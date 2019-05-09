@@ -91,10 +91,10 @@ public class App {
             String[] i = t.split(",| ");
             boolean done = false;
             for(int idx = 0; idx < i.length && !done; idx++){
-                if(i[idx].trim().equals(k)) {                    
+                if(i[idx].trim().equals(k))                   
                     System.out.println("We found it!");
                     done = true;
-                }
+                
             }
             br.close();
 
