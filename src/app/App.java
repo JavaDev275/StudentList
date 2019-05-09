@@ -19,123 +19,118 @@ public class App {
         if(args[0].equals("a")) 
         {
             System.out.println("Loading data ...");
-            File f = new File("students.txt");
-            FileReader r = new FileReader(f);
-            BufferedReader b = new BufferedReader(r);        
-            String D;
-            String t = "";
-            D = b.readLine();
+            File file = new File("students.txt");
+            FileReader reader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(reader);        
+            String currentLine;
+            String fileContent = "";
+            currentLine = bufferedReader.readLine();
             
             // Read in all of the lines from the file 
-            while(D != null) 
+            while(currentLine!= null) 
             {
-                t += D;
-                D = b.readLine();
+                fileContent += currentLine;
+                currentLine = bufferedReader.readLine();
             }        
-            String[] l = t.split(",");
-            for(String j : l) System.out.println(j);
-            b.close();
+            String[] students = fileContent.split(",");
+            for(String student : students) System.out.println(student);
+            bufferedReader.close();
             System.out.println("Data loaded");
         } 
         else if(args[0].equals("r"))
         {      
             // Load the data  
-            File f = new File("students.txt");
-            FileReader r = new FileReader(f);
-            BufferedReader b = new BufferedReader(r);        
-            String d;
-            String t = "";
-            d = b.readLine();
-            while(d != null) 
+            File file = new File("students.txt");
+            FileReader reader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(reader);        
+            String currentLine;
+            String fileContent = "";
+            currentLine = bufferedReader.readLine();
+            while(currentLine != null) 
             {
-                t += d;
-                d = b.readLine();
+                fileContent += currentLine;
+                currentLine = bufferedReader.readLine();
             }
-            String[] l = t.split(",");
-            Random x = new Random();
-            int y = x.nextInt(l.length);
-            System.out.println(l[y]);
-            b.close();
+            String[] students = fileContent.split(",");
+            Random rand = new Random();
+            int randomIndex = rand.nextInt(students.length);
+            System.out.println(students[randomIndex]);
+            bufferedReader.close();
             System.out.println("Data loaded");
 
         } 
         else if(args[0].contains("+"))
         {
             // Read
-            File f = new File("src/students.txt");
-            String k = args[0].substring(1);
-            FileReader c = new FileReader(f);
-            BufferedReader br = new BufferedReader(c);
-            String d;
-            String t = "";
-            d = br.readLine();
-            while(d != null) 
+            File file = new File("src/students.txt");
+            String newEntry = args[0].substring(1);
+            FileReader reader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(reader);
+            String currentLine;
+            String fileContent = "";
+            currentLine = bufferedReader.readLine();
+            while(currentLine != null) 
             {
-                t += d;                
-                d = br.readLine();
+                fileContent += currentLine;                
+                currentLine = bufferedReader.readLine();
             }
 
             // write
-            FileWriter r = new FileWriter(f);
-            BufferedWriter b = new BufferedWriter(r);  
-            b.write(t + ", " + k);
+            FileWriter writer = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);  
+            bufferedWriter.write(fileContent + ", " + newEntry);
             Date now = new Date();
-            b.newLine(); 
-            b.append("List last updated on " + now.toString());
-            b.close();
-            br.close();        
+            bufferedWriter.newLine(); 
+            bufferedWriter.append("List last updated on " + now.toString());
+            bufferedWriter.close();
+            bufferedReader.close();        
         } 
         else if(args[0].contains("?"))
         {
-            File f = new File("students.txt");                          
-            String k = args[0].substring(1);
-            FileReader c = new FileReader(f);
-            BufferedReader br = new BufferedReader(c);            
-            String d;
-            String t = "";
-            d = br.readLine();
-            while(d != null) 
+            File file = new File("students.txt");                          
+            String searchTerm = args[0].substring(1);
+            FileReader reader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(reader);            
+            String currentLine;
+            String fileContent = "";
+            currentLine = bufferedReader.readLine();
+            while(currentLine != null) 
             {
-                t += d;                
-                d = br.readLine();
+                fileContent += currentLine;                
+                currentLine = bufferedReader.readLine();
             }            
-            String[] i = t.split(",| ");
-            System.out.println(i.length);
-            int count = 0;
-            for(String entry : i)
-            {
-                System.out.print(count++ + ":" + entry + " ");
-            }
+            String[] students = fileContent.split(",| ");
             boolean done = false;
-            for(int idx = 0; idx < i.length && !done; idx++)
+            for(int idx = 0; idx < students.length && !done; idx++)
             {
-                if(i[idx].trim().equals(k)) 
+                if(students[idx].trim().equals(searchTerm)) 
                 {                    
                     System.out.println("We found it!");
                     done = true;
                 }
             }
+            bufferedReader.close();
         } 
         else if(args[0].contains("c"))
         {
             System.out.println("Loading data ...");
-            File f = new File("students.txt");                                      
-            FileReader c = new FileReader(f);
-            BufferedReader br = new BufferedReader(c);            
-            String d;
-            String t = "";
-            d = br.readLine();
-            while(d != null) 
+            File file = new File("students.txt");                                      
+            FileReader reader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(reader);            
+            String currentLine;
+            String fileContent = "";
+            currentLine = bufferedReader.readLine();
+            while(currentLine != null) 
             {
-                t += d;                
-                d = br.readLine();
+                fileContent += currentLine;                
+                currentLine = bufferedReader.readLine();
             }        
-            char[] arr = t.toCharArray();
+            char[] fileChars = fileContent.toCharArray();
             int count = 0;
             boolean inWord = false;
-            for(char m : arr)
+            for(char character : fileChars)
             {
-                if(m > ' ' && m < 0177)
+                if(character > ' ' && character < 0177)
                 {
                     if(!inWord) 
                     {
@@ -145,6 +140,7 @@ public class App {
                 } else inWord = false;
             }
             System.out.printf("%d words found", count);
+            bufferedReader.close();
         } else {
             return;
         }
