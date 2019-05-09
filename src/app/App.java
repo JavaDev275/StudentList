@@ -18,7 +18,6 @@ public class App {
 
         if(args[0].equals("a")) 
         {
-            System.out.println("Loading data ...");
             File file = new File("students.txt");
             FileReader reader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(reader);        
@@ -33,9 +32,11 @@ public class App {
                 currentLine = bufferedReader.readLine();
             }        
             String[] students = fileContent.split(",");
-            for(String student : students) System.out.println(student);
+            for(String student : students) 
+            {
+                System.out.println(student);
+            }
             bufferedReader.close();
-            System.out.println("Data loaded");
         } 
         else if(args[0].equals("r"))
         {      
@@ -56,7 +57,6 @@ public class App {
             int randomIndex = rand.nextInt(students.length);
             System.out.println(students[randomIndex]);
             bufferedReader.close();
-            System.out.println("Data loaded");
 
         } 
         else if(args[0].contains("+"))
@@ -111,7 +111,6 @@ public class App {
         } 
         else if(args[0].contains("c"))
         {
-            System.out.println("Loading data ...");
             File file = new File("students.txt");                                      
             FileReader reader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(reader);            
