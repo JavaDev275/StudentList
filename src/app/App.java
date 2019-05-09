@@ -46,14 +46,23 @@ public class App {
         {                      
             String searchTerm = args[0].substring(1);
             String[] students = fileContent.split(Constants.StudentEntryDelimiter);
-            boolean done = false;
-            for(int idx = 0; idx < students.length && !done; idx++)
+            int indexLocation = -1;
+            for(int idx = 0; idx < students.length; idx++)
             {
                 if(students[idx].trim().equals(searchTerm)) 
                 {                    
-                    System.out.println("We found it!");
-                    done = true;
+                    indexLocation = idx;
+                    break;
                 }
+            }
+
+            if(indexLocation >= 0)
+            {
+                System.out.printf("Entry %s found at index %d", searchTerm, indexLocation);
+            } 
+            else
+            {
+                System.out.printf("Entry %s does not exist", searchTerm);
             }
         } 
         else if(args[0].contains(Constants.ShowCount))
