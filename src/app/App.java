@@ -7,8 +7,12 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.util.Random;
 import java.util.Date;
+import java.io.IOException;
 
 public class App {
+    /*
+     * The Main method
+    */
     public static void main(String[] args) throws Exception 
     {
         // Check for valid arguments
@@ -16,89 +20,34 @@ public class App {
             return;
         }
 
+        String fileContent = loadData("students.txt");
+
         if(args[0].equals("a")) 
         {
             System.out.println("Loading data ...");
-            File file = new File("students.txt");
-            FileReader reader = new FileReader(file);
-            BufferedReader bufferedReader = new BufferedReader(reader);        
-            String currentLine;
-            String fileContent = "";
-            currentLine = bufferedReader.readLine();
-            
-            // Read in all of the lines from the file 
-            while(currentLine!= null) 
-            {
-                fileContent += currentLine;
-                currentLine = bufferedReader.readLine();
-            }        
             String[] students = fileContent.split(",");
             for(String student : students) System.out.println(student);
-            bufferedReader.close();
             System.out.println("Data loaded");
         } 
         else if(args[0].equals("r"))
         {      
             // Load the data  
-            File file = new File("students.txt");
-            FileReader reader = new FileReader(file);
-            BufferedReader bufferedReader = new BufferedReader(reader);        
-            String currentLine;
-            String fileContent = "";
-            currentLine = bufferedReader.readLine();
-            while(currentLine != null) 
-            {
-                fileContent += currentLine;
-                currentLine = bufferedReader.readLine();
-            }
             String[] students = fileContent.split(",");
             Random rand = new Random();
             int randomIndex = rand.nextInt(students.length);
             System.out.println(students[randomIndex]);
-            bufferedReader.close();
             System.out.println("Data loaded");
 
         } 
         else if(args[0].contains("+"))
         {
-            // Read
-            File file = new File("src/students.txt");
             String newEntry = args[0].substring(1);
-            FileReader reader = new FileReader(file);
-            BufferedReader bufferedReader = new BufferedReader(reader);
-            String currentLine;
-            String fileContent = "";
-            currentLine = bufferedReader.readLine();
-            while(currentLine != null) 
-            {
-                fileContent += currentLine;                
-                currentLine = bufferedReader.readLine();
-            }
 
-            // write
-            FileWriter writer = new FileWriter(file);
-            BufferedWriter bufferedWriter = new BufferedWriter(writer);  
-            bufferedWriter.write(fileContent + ", " + newEntry);
-            Date now = new Date();
-            bufferedWriter.newLine(); 
-            bufferedWriter.append("List last updated on " + now.toString());
-            bufferedWriter.close();
-            bufferedReader.close();        
+            updateContent(fileContent + ", " + newEntry, "students.txt");
         } 
         else if(args[0].contains("?"))
-        {
-            File file = new File("students.txt");                          
+        {                      
             String searchTerm = args[0].substring(1);
-            FileReader reader = new FileReader(file);
-            BufferedReader bufferedReader = new BufferedReader(reader);            
-            String currentLine;
-            String fileContent = "";
-            currentLine = bufferedReader.readLine();
-            while(currentLine != null) 
-            {
-                fileContent += currentLine;                
-                currentLine = bufferedReader.readLine();
-            }            
             String[] students = fileContent.split(",| ");
             boolean done = false;
             for(int idx = 0; idx < students.length && !done; idx++)
@@ -109,22 +58,10 @@ public class App {
                     done = true;
                 }
             }
-            bufferedReader.close();
         } 
         else if(args[0].contains("c"))
         {
             System.out.println("Loading data ...");
-            File file = new File("students.txt");                                      
-            FileReader reader = new FileReader(file);
-            BufferedReader bufferedReader = new BufferedReader(reader);            
-            String currentLine;
-            String fileContent = "";
-            currentLine = bufferedReader.readLine();
-            while(currentLine != null) 
-            {
-                fileContent += currentLine;                
-                currentLine = bufferedReader.readLine();
-            }        
             char[] fileChars = fileContent.toCharArray();
             int count = 0;
             boolean inWord = false;
@@ -140,9 +77,61 @@ public class App {
                 } else inWord = false;
             }
             System.out.printf("%d words found", count);
-            bufferedReader.close();
         } else {
             return;
         }
+
+        
+    }
+
+    /* 
+     * Reads data from the given file
+     */
+    private static String loadData(String fileName) {
+        // Variable used to organize code and allow buffered reader to close
+        String content = " ";  
+
+        // The try/catch block handles the possible error that may occur if 
+        // there was an issue with accessing the file.        
+        try {
+            File file = new File("students.txt");
+            FileReader reader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(reader);        
+            String currentLine;            
+            currentLine = bufferedReader.readLine();
+            
+            // Read in all of the lines from the file 
+            while(currentLine!= null) 
+            {
+                content += currentLine;
+                currentLine = bufferedReader.readLine();
+            }        
+
+            bufferedReader.close();
+        } catch (IOException exception){
+            System.out.println(exception);
+        } 
+
+        return content;        
+
+    }
+
+    /* 
+     * Writes the given string of data to the file with the given file name.
+     * This method also adds a timestamp to the end of the file.
+     */ 
+    private static void updateContent(String content, String fileName){
+        String timestamp = String.format("List last updated %s", new Date());
+        
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(Constants.StudentList));        
+            writer.write(content);
+            writer.newLine();
+            writer.append(timestamp);            
+            writer.close();
+        } catch (IOException exception){
+            System.out.println(exception);
+        }
+
     }
 }
