@@ -77,7 +77,8 @@ public class App {
                 } else inWord = false;
             }
             System.out.printf("%d words found", count);
-        } else {
+        } else 
+        {
             return;
         }
 
@@ -124,11 +125,13 @@ public class App {
         String timestamp = String.format("List last updated %s", new Date());
         
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(Constants.StudentList));        
-            writer.write(content);
-            writer.newLine();
-            writer.append(timestamp);            
-            writer.close();
+            File file = new File("students.txt");
+            FileWriter writer = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);        
+            bufferedWriter.write(content);
+            bufferedWriter.newLine();
+            bufferedWriter.append(timestamp);            
+            bufferedWriter.close();
         } catch (IOException exception){
             System.out.println(exception);
         }
