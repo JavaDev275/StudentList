@@ -17,6 +17,7 @@ public class App {
     {
         // Check for valid arguments
         if(args == null || args.length != 1){
+            showUsage();
             return;
         }
 
@@ -74,6 +75,7 @@ public class App {
         } 
         else 
         {
+            showUsage();
             return;
         }
 
@@ -127,5 +129,9 @@ public class App {
             System.out.println(exception);
         }
 
+    }
+
+    private static void showUsage(){
+        System.out.printf("java app.App (-a | -r | -c | +WORD | ?WORD)");
     }
 }
