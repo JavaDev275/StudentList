@@ -99,7 +99,7 @@ public class App {
                 fileContent += currentLine;                
                 currentLine = bufferedReader.readLine();
             }            
-            String[] students = fileContent.split(",| ");
+            String[] students = fileContent.split(", ");
             boolean done = false;
             for(int idx = 0; idx < students.length && !done; idx++)
             {
