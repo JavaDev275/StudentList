@@ -85,8 +85,8 @@ public class App {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(Constants.StudentList));
             bufferedStudentList = bufferedReader.readLine();
             bufferedReader.close();
-        } catch (IOException e){
-            System.out.println(e);
+        } catch (IOException exception){
+            System.out.println(exception);
         } 
 
         return bufferedStudentList;        
