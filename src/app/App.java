@@ -122,7 +122,8 @@ public class App {
      * This method also adds a timestamp to the end of the file.
      */ 
     private static void updateContent(String content, String fileName){
-        String timestamp = String.format("List last updated %s", new Date());
+        Date now = new Date();
+        String timestamp = String.format("List last updated %s", now);
         
         try {
             File file = new File("students.txt");
