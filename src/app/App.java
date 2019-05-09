@@ -95,12 +95,6 @@ public class App {
                 d = br.readLine();
             }            
             String[] i = t.split(",| ");
-            System.out.println(i.length);
-            int count = 0;
-            for(String entry : i)
-            {
-                System.out.print(count++ + ":" + entry + " ");
-            }
             boolean done = false;
             for(int idx = 0; idx < i.length && !done; idx++)
             {
@@ -110,6 +104,7 @@ public class App {
                     done = true;
                 }
             }
+            br.close();
         } 
         else if(args[0].contains("c"))
         {
@@ -139,6 +134,7 @@ public class App {
                     }
                 } else inWord = false;
             }
+            br.close();
             System.out.printf("%d words found", count);
         }
     }
