@@ -88,7 +88,7 @@ public class App {
                 t += d;                
                 d = br.readLine();
             }            
-            String[] i = t.split(",| ");
+            String[] i = t.split(", ");
             boolean done = false;
             for(int idx = 0; idx < i.length && !done; idx++){
                 if(i[idx].trim().equals(k))                   
