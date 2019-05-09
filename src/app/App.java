@@ -8,12 +8,12 @@ public class App {
     {
         // Check for valid arguments
         if(args == null || args.length != 1){
-            ShowUsage();
+            showUsage();
             return;
         }
  
         // Every operation requires us to load the student list
-        String studentList = LoadStudentList();
+        String studentList = loadStudentList();
 
         // What if studentList is empty?
 
@@ -43,7 +43,7 @@ public class App {
             String newEntry = args[0].substring(1);        
 
             // TODO: Handle duplicate student names
-            UpdateStudentList(studentList + Constants.StudentEntryDelimiter + newEntry);  
+            updateStudentList(studentList + Constants.StudentEntryDelimiter + newEntry);  
         } 
         else if(args[0].contains(Constants.FindEntry))
         {
@@ -70,11 +70,11 @@ public class App {
         {
             // Invalid arguments were provided, therefore we'll list the
             // valid arguments available to the user.
-            ShowUsage();
+            showUsage();
         }
     }
 
-    public static String LoadStudentList(){
+    public static String loadStudentList(){
 
         // Variable used to organize code and allow buffered reader to close
         String bufferedStudentList = " ";  
@@ -92,7 +92,7 @@ public class App {
         return bufferedStudentList;        
     }
 
-    public static void UpdateStudentList(String content){
+    public static void updateStudentList(String content){
         String timestamp = String.format("List last updated %s", new Date());
         
         try {
@@ -107,7 +107,7 @@ public class App {
         
     }
 
-    public static void ShowUsage(){
+    public static void showUsage(){
         System.out.printf("java app.App (-a | -r | -c | +WORD | ?WORD)");
     }
 }
