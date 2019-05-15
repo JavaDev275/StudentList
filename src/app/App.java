@@ -17,7 +17,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         
         // Check for valid arguments
-        if(args == null || args.length != 1){
+        if(args == null || args.length != 1) {
             return;
         }
 
@@ -29,7 +29,7 @@ public class App {
             for(String student : students) {
                 System.out.println(student);
             }
-        } else if(args[0].equals(Constants.ShowRandom)){      
+        } else if(args[0].equals(Constants.ShowRandom)) {      
 
             // Load the data  
             String[] students = fileContent.split(Constants.StudentEntryDelimiter);
@@ -41,7 +41,7 @@ public class App {
 
             // May have some issues later on with duplicate entries
             updateContent(fileContent + Constants.StudentEntryDelimiter + newEntry, Constants.StudentList);
-        } else if(args[0].contains(Constants.FindEntry)){                      
+        } else if(args[0].contains(Constants.FindEntry)) {                      
             String searchTerm = args[0].substring(1);
             String[] students = fileContent.split(Constants.StudentEntryDelimiter);
             int indexLocation = -1;
@@ -53,18 +53,15 @@ public class App {
             }
 
             // Print out the location and the student to the user
-            if(indexLocation >= 0){
+            if(indexLocation >= 0) {
                 System.out.printf("Entry %s found at index %d", searchTerm, indexLocation);
-            } 
-            else{
+            } else {
                 System.out.printf("Entry %s does not exist", searchTerm);
             }
-        } 
-        else if(args[0].contains(Constants.ShowCount)){
+        } else if(args[0].contains(Constants.ShowCount)) {
             String[] students = fileContent.split(Constants.StudentEntryDelimiter);
             System.out.printf("%d words found", students.length);
-        } 
-        else {
+        } else {
             return;
         }        
     }
