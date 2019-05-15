@@ -15,6 +15,7 @@ public class App {
      * The Main method
     */
     public static void main(String[] args) throws Exception {
+        
         // Check for valid arguments
         if(args == null || args.length != 1){
             return;
@@ -28,22 +29,19 @@ public class App {
             for(String student : students) {
                 System.out.println(student);
             }
-        } 
-        else if(args[0].equals(Constants.ShowRandom)){      
+        } else if(args[0].equals(Constants.ShowRandom)){      
 
             // Load the data  
             String[] students = fileContent.split(Constants.StudentEntryDelimiter);
             Random rand = new Random();
             int randomIndex = rand.nextInt(students.length);
             System.out.println(students[randomIndex]);
-        } 
-        else if(args[0].contains(Constants.AddEntry)){
+        } else if(args[0].contains(Constants.AddEntry)){
             String newEntry = args[0].substring(1);
 
             // May have some issues later on with duplicate entries
             updateContent(fileContent + Constants.StudentEntryDelimiter + newEntry, Constants.StudentList);
-        } 
-        else if(args[0].contains(Constants.FindEntry)){                      
+        } else if(args[0].contains(Constants.FindEntry)){                      
             String searchTerm = args[0].substring(1);
             String[] students = fileContent.split(Constants.StudentEntryDelimiter);
             int indexLocation = -1;
@@ -71,10 +69,11 @@ public class App {
         }        
     }
 
-    /* 
+    /**
      * Reads data from the given file
      */
     private static String loadData(String fileName) {
+
         // Variable used to organize code and allow buffered reader to close
         String content = " ";  
 
@@ -97,7 +96,7 @@ public class App {
         return content;        
     }
 
-    /* 
+    /**
      * Writes the given string of data to the file with the given file name.
      * This method also adds a timestamp to the end of the file.
      */ 
