@@ -14,11 +14,13 @@ public class App {
      * The Main method
     */
     public static void main(String[] args) throws Exception {
+        
         // Check for valid arguments
         if(args == null || args.length != 1){
             return;
         }
 
+        // Every operation requires us to load the student list
         String fileContent = loadData(Constants.StudentList);
 
         if(args[0].equals(Constants.ShowAll)) {
@@ -27,7 +29,8 @@ public class App {
                 System.out.println(student);
             }
         } 
-        else if(args[0].equals(Constants.ShowRandom)){      
+        else if(args[0].equals(Constants.ShowRandom)){  
+
             // Load the data  
             String[] students = fileContent.split(Constants.StudentEntryDelimiter);
             Random rand = new Random();
@@ -66,9 +69,7 @@ public class App {
         } 
         else {
             return;
-        }
-
-        
+        }        
     }
 
     /* 
@@ -92,14 +93,11 @@ public class App {
                 content += currentLine;
                 currentLine = bufferedReader.readLine();
             }        
-
             bufferedReader.close();
         } catch (IOException exception){
             System.out.println(exception);
         } 
-
         return content;        
-
     }
 
     /* 
@@ -109,7 +107,6 @@ public class App {
     private static void updateContent(String content, String fileName){
         Date now = new Date();
         String timestamp = String.format("List last updated %s", now);
-        
         try {
             File file = new File(Constants.StudentList);
             FileWriter writer = new FileWriter(file);
@@ -121,6 +118,5 @@ public class App {
         } catch (IOException exception){
             System.out.println(exception);
         }
-
     }
 }
