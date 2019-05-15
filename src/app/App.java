@@ -10,16 +10,19 @@ import java.util.Date;
 import java.io.IOException;
 
 public class App {
+    
     /*
      * The Main method
     */
     public static void main(String[] args) throws Exception {
+        
         // Check for valid arguments
         if(args == null || args.length != 1){
             showUsage();
             return;
         }
 
+        // Every operation requires us to load the student list
         String fileContent = loadData(Constants.StudentList);
 
         if(args[0].equals(Constants.ShowAll)) {
@@ -29,6 +32,7 @@ public class App {
             }
         } 
         else if(args[0].equals(Constants.ShowRandom)){      
+            
             // Load the data  
             String[] students = fileContent.split(Constants.StudentEntryDelimiter);
             Random rand = new Random();
@@ -52,6 +56,7 @@ public class App {
                 }
             }
 
+            // Print out the location and the student to the user
             if(indexLocation >= 0){
                 System.out.printf("Entry %s found at index %d", searchTerm, indexLocation);
             } 
@@ -66,9 +71,7 @@ public class App {
         else {
             showUsage();
             return;
-        }
-
-        
+        }        
     }
 
     /* 
@@ -95,9 +98,7 @@ public class App {
         } catch (IOException exception){
             System.out.println(exception);
         } 
-
         return content;        
-
     }
 
     /* 
@@ -106,7 +107,6 @@ public class App {
      */ 
     private static void updateContent(String content, String fileName){
         String timestamp = String.format("List last updated %s", new Date());
-        
         try {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(Constants.StudentList));        
             bufferedWriter.write(content);
@@ -116,7 +116,6 @@ public class App {
         } catch (IOException exception){
             System.out.println(exception);
         }
-
     }
 
     private static void showUsage(){
