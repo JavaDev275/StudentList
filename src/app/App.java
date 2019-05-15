@@ -28,7 +28,8 @@ public class App {
                 System.out.println(j);
             }
             b.close();
-        } else if(args[0].equals("r")) {      
+        } else if(args[0].equals("r")) {
+                  
             // Load the data  
             File f = new File("students.txt");
             FileReader r = new FileReader(f);
@@ -47,6 +48,7 @@ public class App {
             b.close();
 
         } else if(args[0].contains("+")) {
+            
             // Read
             File f = new File("src/students.txt");
             String k = args[0].substring(1);
@@ -60,7 +62,7 @@ public class App {
                 d = br.readLine();
             }
 
-            // write
+            // Write
             FileWriter r = new FileWriter(f);
             BufferedWriter b = new BufferedWriter(r);  
             b.write(t + ", " + k);
