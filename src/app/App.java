@@ -46,7 +46,6 @@ public class App {
             int y = x.nextInt(l.length);
             System.out.printf(l[y]);
             b.close();
-
         } else if(args[0].contains("+")) {
             
             // Read
@@ -88,8 +87,7 @@ public class App {
             for(int idx = 0; idx < i.length && !done; idx++){
                 if(i[idx].trim().equals(k))             
                     System.out.printf("We found it!");
-                    done = true;
-                
+                    done = true;                
             }
             br.close();
         } else if(args[0].contains("c")) {
@@ -112,7 +110,9 @@ public class App {
                         count = count + 1;
                         inWord = true;                        
                     }
-                } else inWord = false;
+                } else {
+                    inWord = false;
+                }
             }
             br.close();
             System.out.printf("%d words found", count);
