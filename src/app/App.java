@@ -11,7 +11,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         
         // Check for valid arguments
-        if(args == null || args.length != 1){
+        if(args == null || args.length != 1) {
             showUsage();
             return;
         }
