@@ -10,15 +10,17 @@ import java.util.Date;
 import java.io.IOException;
 
 public class App {
-    /*
+    /**
      * The Main method
     */
     public static void main(String[] args) throws Exception {
+        
         // Check for valid arguments
         if(args == null || args.length != 1){
             return;
         }
 
+        // Every operation requires us to load the student list
         String fileContent = loadData("students.txt");
 
         if(args[0].equals("a")) {
@@ -28,6 +30,7 @@ public class App {
             }
         } 
         else if(args[0].equals("r")){      
+            
             // Load the data  
             String[] students = fileContent.split(",");
             Random rand = new Random();
@@ -69,10 +72,11 @@ public class App {
         
     }
 
-    /* 
+    /** 
      * Reads data from the given file
      */
     private static String loadData(String fileName) {
+        
         // Variable used to organize code and allow buffered reader to close
         String content = " ";  
 
@@ -90,14 +94,11 @@ public class App {
                 content += currentLine;
                 currentLine = bufferedReader.readLine();
             }        
-
             bufferedReader.close();
         } catch (IOException exception){
             System.out.println(exception);
         } 
-
         return content;        
-
     }
 
     /* 
@@ -106,8 +107,7 @@ public class App {
      */ 
     private static void updateContent(String content, String fileName){
         Date now = new Date();
-        String timestamp = String.format("List last updated %s", now);
-        
+        String timestamp = String.format("List last updated %s", now);        
         try {
             File file = new File("students.txt");
             FileWriter writer = new FileWriter(file);
@@ -119,6 +119,5 @@ public class App {
         } catch (IOException exception){
             System.out.println(exception);
         }
-
     }
 }
