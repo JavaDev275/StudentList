@@ -13,8 +13,7 @@ public class App {
     /*
      * The Main method
     */
-    public static void main(String[] args) throws Exception 
-    {
+    public static void main(String[] args) throws Exception {
         // Check for valid arguments
         if(args == null || args.length != 1){
             return;
@@ -22,16 +21,13 @@ public class App {
 
         String fileContent = loadData("students.txt");
 
-        if(args[0].equals("a")) 
-        {
+        if(args[0].equals("a")) {
             String[] students = fileContent.split(",");
-            for(String student : students) 
-            {
+            for(String student : students) {
                 System.out.println(student);
             }
         } 
-        else if(args[0].equals("r"))
-        {      
+        else if(args[0].equals("r")){      
             // Load the data  
             String[] students = fileContent.split(",");
             Random rand = new Random();
@@ -39,42 +35,34 @@ public class App {
             System.out.println(students[randomIndex]);
 
         } 
-        else if(args[0].contains("+"))
-        {
+        else if(args[0].contains("+")){
             String newEntry = args[0].substring(1);
             updateContent(fileContent + ", " + newEntry, "students.txt");
         } 
-        else if(args[0].contains("?"))
-        {                      
+        else if(args[0].contains("?")){                      
             String searchTerm = args[0].substring(1);
             String[] students = fileContent.split(", ");
             boolean done = false;
-            for(int idx = 0; idx < students.length && !done; idx++)
-            {
+            for(int idx = 0; idx < students.length && !done; idx++){
                 if(students[idx].trim().equals(searchTerm))      
                     System.out.println("We found it!");
                     done = true;
             }
         } 
-        else if(args[0].contains("c"))
-        {
+        else if(args[0].contains("c")){
             char[] fileChars = fileContent.toCharArray();
             int count = 0;
             boolean inWord = false;
-            for(char character : fileChars)
-            {
-                if(character > ' ' && character < 0177)
-                {
-                    if(!inWord) 
-                    {
+            for(char character : fileChars){
+                if(character > ' ' && character < 0177){
+                    if(!inWord) {
                         count = count + 1;
                         inWord = true;                        
                     }
                 } else inWord = false;
             }
             System.out.printf("%d words found", count);
-        } else 
-        {
+        } else {
             return;
         }
 
@@ -98,8 +86,7 @@ public class App {
             currentLine = bufferedReader.readLine();
             
             // Read in all of the lines from the file 
-            while(currentLine!= null) 
-            {
+            while(currentLine!= null) {
                 content += currentLine;
                 currentLine = bufferedReader.readLine();
             }        
