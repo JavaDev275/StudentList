@@ -4,6 +4,10 @@ import java.util.*;
 import java.io.*;
 
 public class App {
+
+    /**
+     * The Main Method
+     */
     public static void main(String[] args) throws Exception {
         
         // Check for valid arguments
@@ -41,6 +45,7 @@ public class App {
             String[] students = studentList.split(Constants.StudentEntryDelimiter);
             String searchTerm = args[0].substring(1);
 
+            // Print out whether the student was found to the user
             if(Arrays.asList(students).contains(searchTerm)){
                 System.out.printf("Entry %s found", searchTerm);
             } 
@@ -58,6 +63,9 @@ public class App {
         }
     }
 
+    /**
+     * Reads data from the set file provided in Constants.java
+     */
     public static String loadStudentList() {
 
         // Variable used to organize code and allow buffered reader to close
@@ -75,6 +83,10 @@ public class App {
         return bufferedStudentList;        
     }
 
+    /** 
+     * Writes the given string of data to the file with the given file name.
+     * This method also adds a timestamp to the end of the file.
+     */ 
     public static void updateStudentList(String content) {
         String timestamp = String.format("List last updated %s", new Date());        
         try {
@@ -88,6 +100,9 @@ public class App {
         }        
     }
 
+    /**
+     * Default print out statement describing usage for invalid input.
+     */
     public static void showUsage() {
         System.out.printf("java app.App (-a | -r | -c | +WORD | ?WORD)");
     }
