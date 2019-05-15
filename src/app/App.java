@@ -4,7 +4,12 @@ import java.util.*;
 import java.io.*;
 
 public class App {
+
+    /**
+     * The Main Method
+     */
     public static void main(String[] args) throws Exception {
+        
         // Check for valid arguments
         if(args == null || args.length != 1){
             showUsage();
@@ -21,7 +26,6 @@ public class App {
             for(String student : students) {
                 System.out.println(student);
             }
-
         } 
         else if(args[0].equals(Constants.ShowRandom)){      
             String[] students = studentList.split(Constants.StudentEntryDelimiter);
@@ -35,7 +39,6 @@ public class App {
             Random rand = new Random();
             int randomIndex = rand.nextInt(students.length);
             System.out.println(students[randomIndex]);
-
         }         
         else if(args[0].contains(Constants.AddEntry)){                          
             String newEntry = args[0].substring(1);        
@@ -54,26 +57,29 @@ public class App {
                 }
             }
 
-
+            // Print out the location and the student to the user
             if(indexLocation >= 0){
                 System.out.printf("Entry %s found at index %d", searchTerm, indexLocation);
             } 
             else {
                 System.out.printf("Entry %s does not exist", searchTerm);
             }
-
         } 
         else if(args[0].contains(Constants.ShowCount)) {
             String[] students = studentList.split(Constants.StudentEntryDelimiter);
             System.out.printf("%d words found", students.length);
         }
         else {
+
             // Invalid arguments were provided, therefore we'll list the
             // valid arguments available to the user.
             showUsage();
         }
     }
 
+    /**
+     * Reads data from the set file provided in Constants.java
+     */
     public static String loadStudentList(){
 
         // Variable used to organize code and allow buffered reader to close
@@ -88,13 +94,15 @@ public class App {
         } catch (IOException e){
             System.out.println(e);
         } 
-
         return bufferedStudentList;        
     }
 
+    /**
+     * Writes the given string of data to the file with the given file name.
+     * This method also adds a timestamp to the end of the file.
+     */ 
     public static void updateStudentList(String content){
         String timestamp = String.format("List last updated %s", new Date());
-        
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(Constants.StudentList));        
             writer.write(content);
@@ -104,9 +112,11 @@ public class App {
         } catch (IOException exception){
             System.out.println(exception);
         }
-        
     }
 
+    /**
+     * Default print out statement for invalid input describing usage.
+     */
     public static void showUsage(){
         System.out.printf("java app.App (-a | -r | -c | +WORD | ?WORD)");
     }
