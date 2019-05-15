@@ -120,7 +120,9 @@ public class App {
                         count = count + 1;
                         inWord = true;                        
                     }
-                } else inWord = false;
+                } else {
+                    inWord = false;
+                }
             }
             System.out.printf("%d words found", count);
             bufferedReader.close();
