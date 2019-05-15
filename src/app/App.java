@@ -13,8 +13,7 @@ public class App {
     /*
      * The Main method
     */
-    public static void main(String[] args) throws Exception 
-    {
+    public static void main(String[] args) throws Exception {
         // Check for valid arguments
         if(args == null || args.length != 1){
             return;
@@ -22,59 +21,48 @@ public class App {
 
         String fileContent = loadData(Constants.StudentList);
 
-        if(args[0].equals(Constants.ShowAll)) 
-        {
+        if(args[0].equals(Constants.ShowAll)) {
             String[] students = fileContent.split(Constants.StudentEntryDelimiter);
-            for(String student : students) 
-            {
+            for(String student : students) {
                 System.out.println(student);
             }
         } 
-        else if(args[0].equals(Constants.ShowRandom))
-        {      
+        else if(args[0].equals(Constants.ShowRandom)){      
             // Load the data  
             String[] students = fileContent.split(Constants.StudentEntryDelimiter);
             Random rand = new Random();
             int randomIndex = rand.nextInt(students.length);
             System.out.println(students[randomIndex]);
         } 
-        else if(args[0].contains(Constants.AddEntry))
-        {
+        else if(args[0].contains(Constants.AddEntry)){
             String newEntry = args[0].substring(1);
 
             // May have some issues later on with duplicate entries
             updateContent(fileContent + Constants.StudentEntryDelimiter + newEntry, Constants.StudentList);
         } 
-        else if(args[0].contains(Constants.FindEntry))
-        {                      
+        else if(args[0].contains(Constants.FindEntry)){                      
             String searchTerm = args[0].substring(1);
             String[] students = fileContent.split(Constants.StudentEntryDelimiter);
             int indexLocation = -1;
-            for(int idx = 0; idx < students.length; idx++)
-            {
-                if(students[idx].trim().equals(searchTerm)) 
-                {                    
+            for(int idx = 0; idx < students.length; idx++){
+                if(students[idx].trim().equals(searchTerm)) {                    
                     indexLocation = idx;
                     break;
                 }
             }
 
-            if(indexLocation >= 0)
-            {
+            if(indexLocation >= 0){
                 System.out.printf("Entry %s found at index %d", searchTerm, indexLocation);
             } 
-            else
-            {
+            else{
                 System.out.printf("Entry %s does not exist", searchTerm);
             }
         } 
-        else if(args[0].contains(Constants.ShowCount))
-        {
+        else if(args[0].contains(Constants.ShowCount)){
             String[] students = fileContent.split(Constants.StudentEntryDelimiter);
             System.out.printf("%d words found", students.length);
         } 
-        else 
-        {
+        else {
             return;
         }
 
@@ -96,8 +84,7 @@ public class App {
             currentLine = bufferedReader.readLine();
             
             // Read in all of the lines from the file 
-            while(currentLine!= null) 
-            {
+            while(currentLine!= null) {
                 content += currentLine;
                 currentLine = bufferedReader.readLine();
             }        
