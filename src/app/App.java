@@ -72,13 +72,11 @@ public class App {
         } catch (IOException exception) {
             System.out.println(exception);
         } 
-
         return bufferedStudentList;        
     }
 
     public static void updateStudentList(String content) {
-        String timestamp = String.format("List last updated %s", new Date());
-        
+        String timestamp = String.format("List last updated %s", new Date());        
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(Constants.StudentList));        
             writer.write(content);
@@ -87,8 +85,7 @@ public class App {
             writer.close();
         } catch (IOException exception) {
             System.out.println(exception);
-        }
-        
+        }        
     }
 
     public static void showUsage() {
