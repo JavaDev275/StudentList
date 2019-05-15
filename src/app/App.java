@@ -29,8 +29,7 @@ public class App {
             for(String student : students) {
                 System.out.println(student);
             }
-        } 
-        else if(args[0].equals("r")){      
+        } else if(args[0].equals("r")){      
             
             // Load the data  
             String[] students = fileContent.split(",");
@@ -38,12 +37,10 @@ public class App {
             int randomIndex = rand.nextInt(students.length);
             System.out.println(students[randomIndex]);
 
-        } 
-        else if(args[0].contains("+")){
+        } else if(args[0].contains("+")){
             String newEntry = args[0].substring(1);
             updateContent(fileContent + ", " + newEntry, "students.txt");
-        } 
-        else if(args[0].contains("?")){                      
+        } else if(args[0].contains("?")){                      
             String searchTerm = args[0].substring(1);
             String[] students = fileContent.split(", ");
             boolean done = false;
@@ -52,8 +49,7 @@ public class App {
                     System.out.println("We found it!");
                     done = true;
             }
-        } 
-        else if(args[0].contains("c")){
+        } else if(args[0].contains("c")){
             char[] fileChars = fileContent.toCharArray();
             int count = 0;
             boolean inWord = false;
@@ -63,14 +59,14 @@ public class App {
                         count = count + 1;
                         inWord = true;                        
                     }
-                } else inWord = false;
+                } else {
+                    inWord = false;
+                }
             }
             System.out.printf("%d words found", count);
         } else {
             return;
         }
-
-        
     }
 
     /** 
@@ -102,7 +98,7 @@ public class App {
         return content;        
     }
 
-    /* 
+    /**
      * Writes the given string of data to the file with the given file name.
      * This method also adds a timestamp to the end of the file.
      */ 
