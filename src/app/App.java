@@ -13,7 +13,6 @@ public class App {
     {
  
         if(args[0].equals("a")) {
-            System.out.println("Loading data ...");
             File f = new File("students.txt");
             FileReader r = new FileReader(f);
             BufferedReader b = new BufferedReader(r);        
@@ -27,14 +26,12 @@ public class App {
             String[] l = t.split(",");
             for(String j : l) System.out.println(j);
             b.close();
-            System.out.println("Data loaded");
         } else if(args[0].equals("r")){      
             // Load the data  
             File f = new File("students.txt");
             FileReader r = new FileReader(f);
             BufferedReader b = new BufferedReader(r);        
-            String d;
-            String t = "";
+            String d; String t = "";
             d = b.readLine();
             while(d != null) {
                 t += d;
@@ -45,7 +42,6 @@ public class App {
                 int y = x.nextInt(l.length);
                     System.out.println(l[y]);
             b.close();
-            System.out.println("Data loaded");
 
         } 
         
@@ -84,8 +80,7 @@ public class App {
             String d;
             String t = "";
             d = br.readLine();
-            while(d != null) {
-                t += d;                
+            while(d != null) { t += d;                
                 d = br.readLine();
             }            
             String[] i = t.split(", ");
@@ -99,7 +94,6 @@ public class App {
             br.close();
 
         } else if(args[0].contains("c")){
-            System.out.println("Loading data ...");
             
             File f = new File("students.txt");                                      
             FileReader c = new FileReader(f);
@@ -112,9 +106,7 @@ public class App {
                 d = br.readLine();
             }        
 
-            char[] arr = t.toCharArray();
-            int count = 0;
-            boolean inWord = false;
+            char[] arr = t.toCharArray(); int count = 0; boolean inWord = false;
             for(char m : arr){
                 if(m > ' ' && m < 0177){
                     if(!inWord) {
