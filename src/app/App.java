@@ -74,6 +74,7 @@ public class App {
      * Reads data from the given file
      */
     private static String loadData(String fileName) {
+        
         // Variable used to organize code and allow buffered reader to close
         String content = " ";  
 
