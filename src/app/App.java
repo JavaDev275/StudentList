@@ -115,7 +115,7 @@ public class App {
     }
 
     /**
-     * Default print out statement for invalid input describing usage.
+     * Default print out statement describing usage for invalid input.
      */
     public static void showUsage(){
         System.out.printf("java app.App (-a | -r | -c | +WORD | ?WORD)");
