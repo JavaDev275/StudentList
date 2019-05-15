@@ -10,6 +10,7 @@ import java.util.Date;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        
         // Check for valid arguments
         if(args == null || args.length != 1) {
             return;
@@ -34,6 +35,7 @@ public class App {
             }
             bufferedReader.close();
         } else if(args[0].equals("r")) {      
+            
             // Load the data  
             File file = new File("students.txt");
             FileReader reader = new FileReader(file);
@@ -53,6 +55,7 @@ public class App {
 
         } 
         else if(args[0].contains("+")) {
+            
             // Read
             File file = new File("src/students.txt");
             String newEntry = args[0].substring(1);
@@ -66,7 +69,7 @@ public class App {
                 currentLine = bufferedReader.readLine();
             }
 
-            // write
+            // Write
             FileWriter writer = new FileWriter(file);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);  
             bufferedWriter.write(fileContent + ", " + newEntry);
