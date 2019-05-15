@@ -74,7 +74,7 @@ public class App {
         }        
     }
 
-    /* 
+    /**
      * Reads data from the given file
      */
     private static String loadData(String fileName) {
@@ -101,7 +101,7 @@ public class App {
         return content;        
     }
 
-    /* 
+    /**
      * Writes the given string of data to the file with the given file name.
      * This method also adds a timestamp to the end of the file.
      */ 
@@ -118,6 +118,9 @@ public class App {
         }
     }
 
+    /**
+     * Default print out statement describing usage for invalid input.
+     */
     private static void showUsage(){
         System.out.printf("java app.App (-a | -r | -c | +WORD | ?WORD)");
     }
