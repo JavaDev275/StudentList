@@ -18,6 +18,7 @@ public class App {
         
         // Check for valid arguments
         if(args == null || args.length != 1) {
+            System.out.printf("java app.App (-a | -r | -c | +WORD | ?WORD)");
             return;
         }
 
@@ -58,7 +59,7 @@ public class App {
             } else {
                 System.out.printf("Entry %s does not exist", searchTerm);
             }
-        } else if(args[0].contains(Constants.ShowCount)){
+        } else if(args[0].contains(Constants.ShowCount)) {
             char[] fileChars = fileContent.toCharArray();
             int count = 0;
             boolean inWord = false;
@@ -74,6 +75,7 @@ public class App {
             }
             System.out.printf("%d words found", count);
         } else {
+            System.out.printf("java app.App (-a | -r | -c | +WORD | ?WORD)");
             return;
         }
     }
