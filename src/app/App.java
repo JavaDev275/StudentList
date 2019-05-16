@@ -10,6 +10,13 @@ import java.util.Date;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        
+        // Check for valid arguments
+        if(args == null || args.length != 1) {
+            System.out.printf("java app.App (a | r | c | +WORD | ?WORD)");
+            return;
+        }
+
         if(args[0].equals("a")) {
             File f = new File("students.txt");
             FileReader r = new FileReader(f);
@@ -28,8 +35,8 @@ public class App {
                 System.out.println(j);
             }
             b.close();
-        } else if(args[0].equals("r")) {
-                  
+        } else if(args[0].equals("r")) {      
+            
             // Load the data  
             File f = new File("students.txt");
             FileReader r = new FileReader(f);
@@ -44,7 +51,7 @@ public class App {
             String[] l = t.split(",");
             Random x = new Random();
             int y = x.nextInt(l.length);
-            System.out.printf(l[y]);
+            System.out.println(l[y]);
             b.close();
         } else if(args[0].contains("+")) {
             
@@ -84,10 +91,10 @@ public class App {
             }            
             String[] i = t.split(", ");
             boolean done = false;
-            for(int idx = 0; idx < i.length && !done; idx++){
-                if(i[idx].trim().equals(k))             
-                    System.out.printf("We found it!");
-                    done = true;                
+            for(int idx = 0; idx < i.length && !done; idx++) {
+                if(i[idx].trim().equals(k))      
+                    System.out.println("We found it!");
+                    done = true;
             }
             br.close();
         } else if(args[0].contains("c")) {
@@ -104,8 +111,8 @@ public class App {
             char[] arr = t.toCharArray();
             int count = 0;
             boolean inWord = false;
-            for(char m : arr){
-                if(m > ' ' && m < 0177){
+            for(char m : arr) {
+                if(m > ' ' && m < 0177) {
                     if(!inWord) {
                         count = count + 1;
                         inWord = true;                        
