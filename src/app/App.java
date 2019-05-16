@@ -127,9 +127,6 @@ public class App {
             }
             System.out.printf("%d words found", count);
             bufferedReader.close();
-        } else {
-            System.out.printf("java app.App (a | r | c | +WORD | ?WORD)");
-            return;
         }
     }
 }
