@@ -18,6 +18,7 @@ public class App {
         
         // Check for valid arguments
         if(args == null || args.length != 1) {
+            System.out.printf("java app.App (-a | -r | -c | +WORD | ?WORD)");
             return;
         }
 
@@ -45,7 +46,7 @@ public class App {
             String searchTerm = args[0].substring(1);
             String[] students = fileContent.split(Constants.StudentEntryDelimiter);
             int indexLocation = -1;
-            for(int idx = 0; idx < students.length; idx++){
+            for(int idx = 0; idx < students.length; idx++) {
                 if(students[idx].trim().equals(searchTerm)) {                    
                     indexLocation = idx;
                     break;
@@ -62,6 +63,7 @@ public class App {
             String[] students = fileContent.split(Constants.StudentEntryDelimiter);
             System.out.printf("%d words found", students.length);
         } else {
+            System.out.printf("java app.App (-a | -r | -c | +WORD | ?WORD)");
             return;
         }        
     }
