@@ -17,7 +17,8 @@ public class App {
     public static void main(String[] args) throws Exception {
         
         // Check for valid arguments
-        if(args == null || args.length != 1){
+        if(args == null || args.length != 1) {
+            System.out.printf("java app.App (-a | -r | -c | +WORD | ?WORD)");
             return;
         }
 
@@ -65,6 +66,7 @@ public class App {
             }
             System.out.printf("%d words found", count);
         } else {
+            System.out.printf("java app.App (-a | -r | -c | +WORD | ?WORD)");
             return;
         }
     }
