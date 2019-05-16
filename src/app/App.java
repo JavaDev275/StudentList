@@ -17,7 +17,8 @@ public class App {
     public static void main(String[] args) throws Exception {
         
         // Check for valid arguments
-        if(args == null || args.length != 1){
+        if(args == null || args.length != 1) {
+            System.out.printf("java app.App (-a | -r | -c | +WORD | ?WORD)");
             return;
         }
 
@@ -41,21 +42,21 @@ public class App {
 
             // May have some issues later on with duplicate entries
             updateContent(fileContent + Constants.StudentEntryDelimiter + newEntry, Constants.StudentList);
-        } else if(args[0].contains(Constants.FindEntry)){                      
+        } else if(args[0].contains(Constants.FindEntry)) {                      
             String searchTerm = args[0].substring(1);
             String[] students = fileContent.split(Constants.StudentEntryDelimiter);
             boolean done = false;
-            for(int idx = 0; idx < students.length && !done; idx++){
+            for(int idx = 0; idx < students.length && !done; idx++) {
                 if(students[idx].trim().equals(searchTerm))      
                     System.out.println("We found it!");
                     done = true;
             }
-        } else if(args[0].contains(Constants.ShowCount)){
+        } else if(args[0].contains(Constants.ShowCount)) {
             char[] fileChars = fileContent.toCharArray();
             int count = 0;
             boolean inWord = false;
             for(char character : fileChars){
-                if(character > ' ' && character < 0177){
+                if(character > ' ' && character < 0177) {
                     if(!inWord) {
                         count = count + 1;
                         inWord = true;                        
@@ -66,6 +67,7 @@ public class App {
             }
             System.out.printf("%d words found", count);
         } else {
+            System.out.printf("java app.App (-a | -r | -c | +WORD | ?WORD)");
             return;
         }   
     }
