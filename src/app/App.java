@@ -13,7 +13,7 @@ public class App {
         
         // Check for valid arguments
         if(args == null || args.length != 1) {
-            System.out.printf("java app.App (-a | -r | -c | +WORD | ?WORD)");
+            System.out.printf("java app.App (a | r | c | +WORD | ?WORD)");
             return;
         }
 
@@ -128,7 +128,7 @@ public class App {
             System.out.printf("%d words found", count);
             bufferedReader.close();
         } else {
-            System.out.printf("java app.App (-a | -r | -c | +WORD | ?WORD)");
+            System.out.printf("java app.App (a | r | c | +WORD | ?WORD)");
             return;
         }
     }
