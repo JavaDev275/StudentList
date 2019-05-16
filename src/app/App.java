@@ -62,10 +62,7 @@ public class App {
         } else if(args[0].contains(Constants.ShowCount)) {
             String[] students = fileContent.split(Constants.StudentEntryDelimiter);
             System.out.printf("%d words found", students.length);
-        } else {
-            System.out.printf("java app.App (-a | -r | -c | +WORD | ?WORD)");
-            return;
-        }        
+        }      
     }
 
     /**
