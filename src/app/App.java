@@ -58,7 +58,7 @@ public class App {
         else if(args[0].contains("+")) {
             
             // Read
-            File file = new File("src/students.txt");
+            File file = new File("students.txt");
             String newEntry = args[0].substring(1);
             FileReader reader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(reader);
