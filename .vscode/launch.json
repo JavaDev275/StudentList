@@ -16,8 +16,9 @@
             "name": "Debug (Launch)-App<StudentList>",
             "request": "launch",
             "mainClass": "app.App",
-            "projectName": "StudentList"
-            
+            "projectName": "StudentList",
+            "cwd":"${workspaceRoot}\\src",
+            "args":""
         }
     ]
 }
