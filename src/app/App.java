@@ -8,7 +8,7 @@ public class App {
     /**
      * The Main Method
      */
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         
         // Check for valid arguments
         if(args == null || args.length != 1){
